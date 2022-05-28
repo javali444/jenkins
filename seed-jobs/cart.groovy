@@ -1,9 +1,13 @@
-freeStyleJob('demo') {
+multibranchPipelineJob('cart') {
+    branchSources {
+        git {
+            remote('https://github.com/javali444/cart.git')
 
-    scm {
-        github('jenkinsci/job-dsl-plugin', 'master')
+        }
     }
-    steps {
-        gradle('clean build')
+    orphanedItemStrategy {
+        discardOldItems {
+            numToKeep(20)
+        }
     }
 }
