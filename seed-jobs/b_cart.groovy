@@ -3,7 +3,8 @@ multibranchPipelineJob('CI-pipeline/cart') {
         github {
             id('23232323') // IMPORTANT: use a constant and unique identifier
             scanCredentialsId('GitHub')
-            repository('javali444/cart')
+            repoOwner('javali444')
+            repository('cart')
         }
     }
 }
