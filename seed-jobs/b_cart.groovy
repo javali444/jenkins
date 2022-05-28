@@ -1,20 +1,9 @@
-folder('CI-pipeline') {
-    displayName('CI-pipeline')
-    description('CI-pipeline')
-}
-
-
 multibranchPipelineJob('cart') {
     branchSources {
-        git {
-            id('1234') // IMPORTANT: use a constant and unique identifier
-            remote('https://github.com/javali444/cart.git')
+        github {
+            id('23232323') // IMPORTANT: use a constant and unique identifier
+            scanCredentialsId('GitHubToken')
+            repository('https://github.com/javali444/cart.git')
         }
     }
-    orphanedItemStrategy {
-        discardOldItems {
-            numToKeep(20)
-        }
-    }
-
 }
