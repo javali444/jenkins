@@ -1,4 +1,4 @@
-multibranchPipelineJob('cart') {
+multibranchPipelineJob('CI-pipeline/cart') {
     branchSources {
         github {
             id('23232323') // IMPORTANT: use a constant and unique identifier
