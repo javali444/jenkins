@@ -1,5 +1,5 @@
 - name:  Check Jenkins connection
-  shell:  "{{JENKINS_PREFIX}} who-am-i"
+  shell:  "{{JENKINS_PREFIX}}"
 
 
 - name:  Create Jenkins Job
