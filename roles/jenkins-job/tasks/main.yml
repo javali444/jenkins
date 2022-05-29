@@ -1,14 +1,16 @@
-#- name:  Check Jenkins connection
-#  shell:  "{{JENKINS_CLI_PREFIX}} who-am-i"
+- name: Check Jenkins Connection
+  shell: "{{JENKINS_CLI_PREFIX}} who-am-i "
 
-
-- name:  Create Jenkins Job
-  include_tasks:  job_creation.yml
+- name: Create Jenkins Folders
+  include_tasks: folders-job.yml
   loop:
-    -  {name: "sample1", repname: "sample1"}
+    - {name: "CI-Pipelines", description: "All CI Pipelines"}
 
+- name: Create Jenkins Multi Branch Pipelines
+  include_tasks: mb-job.yml
+  loop:
+    - {name: "cart", repoName: "cart", dirName: "CI-Pipelines/"}
 
-
-#    - name:  Update Job
-#      when:  check_job.rc == 0
-
+#- name: Create Jenkins Pipelines
+#  include_tasks: pipeline-job.yml
+#  loop: "{{PIPELINE_JOBS}}"
