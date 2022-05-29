@@ -1,3 +1,29 @@
-- name:  Demo
-  debug:
-    msg: Hello
+- name:  Check Jenkins connection
+  shell:  "{{JENKINS_PREFIX}} who-am-i"
+
+
+- name:  Create Jenkins Job
+  loop:
+    -  {name: "sample1", repname: "sample1"}
+  blocK:
+    - name:  Check if job exists
+      shell:  "{{JENKINS_PREFIX}} get-job {{item.name}}"
+      ignore_errors:  true
+      register:  check_job
+
+    - name:  Get the unique ID value
+      shell:  date | md5sum | awk '{print $1}'
+      register: unique_id
+
+    - name:  Update Job template
+      template:
+        src:  job.yml
+        dest:  /tmp/job.yml
+
+    - name:  Create Job
+      when:  check_job.rc == 3
+      shell:  "cat /tmp/job/yml | {{JENKINS_PREFIX}} create-job {{item.name}}"
+
+#    - name:  Update Job
+#      when:  check_job.rc == 0
+
