@@ -26,8 +26,8 @@
                     <apiUri>https://api.github.com</apiUri>
                     <credentialsId>GitHub</credentialsId>
                     <repoOwner>javali444</repoOwner>
-                    <repository>{{item.reponame}}</repository>
-                    <repositoryUrl>https://github.com/javali444/{{item.reponame}}.git</repositoryUrl>
+                    <repository>{{item.repname}}</repository>
+                    <repositoryUrl>https://github.com/javali444/{{item.repname}}.git</repositoryUrl>
                     <traits>
                         <org.jenkinsci.plugins.github__branch__source.BranchDiscoveryTrait>
                             <strategyId>1</strategyId>
